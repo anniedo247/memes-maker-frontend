@@ -22,8 +22,8 @@ const MemeList = ({ memes, showDetail }) => {
 const MemeCard = ({ meme, showDetail }) => {
   return (
     <Card
-    border="primary"
-    className="mouse-hover"
+    border="secondary"
+    className="mouse-hover mb-4"
     style={{width:"18em"}}
     onClick={() => showDetail(meme)}
     >
@@ -31,7 +31,7 @@ const MemeCard = ({ meme, showDetail }) => {
         variant="top"
         src={`${process.env.REACT_APP_BACKEND_API}/${
         meme.outputMemePath.split("public/")[1]
-      }?${meme.updatedAt}`}
+      }?${meme.updateAt}`}
       />
     </Card>
   );
