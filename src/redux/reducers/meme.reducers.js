@@ -23,8 +23,10 @@ const memeReducer = (state = initialState, action) => {
       return { ...state, loading: false };
     //Create New Meme
     case types.CREATE_MEME_REQUEST:
+    case types.UPDATE_MEME_REQUEST:
         return { ...state, loading: true };
     case types.CREATE_MEME_SUCCESS:
+    case types.UPDATE_MEME_SUCCESS:
       return {
         ...state,
         selectedMeme: {
@@ -37,6 +39,7 @@ const memeReducer = (state = initialState, action) => {
         loading: false,
       };
     case types.CREATE_MEME_FAILURE:
+    case types.UPDATE_MEME_FAILURE:
       return { ...state, loading: false };
     
     case types.SET_SELECTED_MEME:

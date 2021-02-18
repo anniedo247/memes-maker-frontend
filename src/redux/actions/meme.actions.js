@@ -35,10 +35,27 @@ const setSelectedMeme = (meme) => ({
   payload: meme,
 });
 
+const updateMemeRequest = (texts, memeId) => async (dispatch) => {
+  dispatch({ type: types.UPDATE_MEME_REQUEST, payload: null });
+  try {
+    const body = { texts };
+    console.log("body",body)
+    const res = await api.put(`/memes/${memeId}`, body);
+    dispatch({
+      type: types.UPDATE_MEME_SUCCESS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({ type: types.UPDATE_MEME_FAILURE, payload: error });
+  }
+};
+
+
 const memeActions = {
   memesRequest,
   createMemeRequest,
   setSelectedMeme,
+  updateMemeRequest,
 };
 
 export default memeActions;
