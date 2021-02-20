@@ -53,7 +53,7 @@ const CreateMemePage = () => {
                         onClick={handleCancel}
                         disabled={loading}
                       >
-                        Cancel
+                        Done
                       </Button>
                     </div>
                   ) : (

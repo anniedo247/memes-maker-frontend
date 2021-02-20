@@ -7,8 +7,8 @@ const memesRequest = (pageNum) => async (dispatch) => {
   try {
     const url = `/memes?page=${pageNum}&perPage=9`;
     const res = await api.get(url);
-    console.log("res", res.data.memes);
-    dispatch({ type: types.GET_MEMES_SUCCESS, payload: res.data });
+    console.log("res", res.data.data.memes);
+    dispatch({ type: types.GET_MEMES_SUCCESS, payload: res.data.data });
   } catch (error) {
     dispatch({ type: types.GET_MEMES_FAILURE, payload: error });
   }
@@ -21,7 +21,7 @@ const createMemeRequest = (image) => async (dispatch) => {
     const res = await api.post(`/memes`, formData);
     dispatch({
       type: types.CREATE_MEME_SUCCESS,
-      payload: res.data,
+      payload: res.data.data,
     });
     toast.success("You can put your idea on the meme now!");
   } catch (error) {
@@ -43,7 +43,7 @@ const updateMemeRequest = (texts, memeId) => async (dispatch) => {
     const res = await api.put(`/memes/${memeId}`, body);
     dispatch({
       type: types.UPDATE_MEME_SUCCESS,
-      payload: res.data,
+      payload: res.data.data,
     });
   } catch (error) {
     dispatch({ type: types.UPDATE_MEME_FAILURE, payload: error });
